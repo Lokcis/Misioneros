@@ -7,7 +7,7 @@ package mundo;
 public class Misionero {
 
     private int misionerosIzq = 3, misionerosDer = 0, canibalesIzq = 3, canibalesDer = 0;
-    private boolean bote;
+    private boolean bote = true;
 
     public Misionero() {
     }
@@ -66,6 +66,7 @@ public class Misionero {
                 misionerosIzq--;
                 misionerosDer++;
                 bote = false;
+                System.out.println("holi");
             }
         } else {
             if (canibalesIzq <= misionerosIzq && misionerosDer > 0) {
@@ -79,13 +80,13 @@ public class Misionero {
 
     public void llevar1C() {
         if (bote) {
-            if (misionerosDer == 0 || misionerosDer > canibalesDer && canibalesIzq > 0) {
+            if ((misionerosDer == 0 || misionerosDer > canibalesDer) && canibalesIzq > 0) {
                 canibalesIzq--;
                 canibalesDer++;
                 bote = false;
             }
         } else {
-            if (misionerosIzq == 0 || misionerosIzq > canibalesIzq && canibalesDer > 0) {
+            if ((misionerosIzq == 0 || misionerosIzq > canibalesIzq) && canibalesDer > 0) {
                 canibalesDer--;
                 canibalesIzq++;
                 bote = true;
@@ -96,12 +97,12 @@ public class Misionero {
 
     public void llevar2M() {
         if (bote) {
-            if (canibalesDer <= misionerosDer && misionerosIzq > 1) {
+            if (canibalesDer-2 <= misionerosDer && misionerosIzq > 1) {
                 misionerosIzq -= 2;
                 misionerosDer += 2;
                 bote = false;
             } else {
-                if (canibalesIzq <= misionerosIzq && misionerosDer > 1) {
+                if (canibalesIzq-2 <= misionerosIzq && misionerosDer > 1) {
                     misionerosDer -= 2;
                     misionerosIzq += 2;
                     bote = true;
