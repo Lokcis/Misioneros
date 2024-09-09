@@ -62,7 +62,7 @@ public class Misionero {
 
     public void llevar1M() {
         if (bote) {
-            if (canibalesDer < misionerosDer && misionerosIzq > 0) {
+            if (canibalesDer <= misionerosDer && misionerosIzq > 0) {
                 misionerosIzq--;
                 misionerosDer++;
                 bote = false;
@@ -71,7 +71,7 @@ public class Misionero {
                 System.out.println("Accion invalida");
             }
         } else {
-            if (canibalesIzq < misionerosIzq && misionerosDer > 0) {
+            if (canibalesIzq <= misionerosIzq && misionerosDer > 0) {
                 misionerosDer--;
                 misionerosIzq++;
                 bote = true;

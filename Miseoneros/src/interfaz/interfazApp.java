@@ -13,51 +13,48 @@ public class interfazApp {
         misionero = new Misionero();
         view(misionero);
 
-        misionero.llevar2M();
-        view(misionero);
-        misionero.llevar2M();
-        view(misionero);
-        misionero.llevar2M();
-        view(misionero);
-        misionero.llevar2M();
-        view(misionero);
+//        misionero.llevar2M();
+//        view(misionero);
+//        misionero.llevar2M();
+//        view(misionero);
+//        misionero.llevar2M();
+//        view(misionero);
+//        misionero.llevar2M();
+//        view(misionero);
 
 //        misionero.llevar1M();
 //        view(misionero);
-//        
 //        misionero.llevar1C();
 //        view(misionero);
-//        
 //        misionero.llevar2C();
-//        view(misionero);
-//        
-//        misionero.llevar2M();
-//        view(misionero);
-//        
-//        misionero.llevarMC();
-//        view(misionero);
-//        misionero.llevarMC();
-//        view(misionero);
-//        misionero.llevar1M();
-//        view(misionero);
-//        misionero.llevar2C();
-//        view(misionero);
-//        misionero.llevar1C();
 //        view(misionero);
 //        misionero.llevar2M();
 //        view(misionero);
 //        misionero.llevarMC();
 //        view(misionero);
-//        misionero.llevar2M();
-//        view(misionero);
-//        misionero.llevar1C();
-//        view(misionero);
-//        misionero.llevar2C();
-//        view(misionero);
-//        misionero.llevar1C();
-//        view(misionero);
-//        misionero.llevar2C();
-//        view(misionero);
+
+        misionero.llevarMC();
+        view(misionero);
+        misionero.llevar1M();
+        view(misionero);
+        misionero.llevar2C();
+        view(misionero);
+        misionero.llevar1C();
+        view(misionero);
+        misionero.llevar2M();
+        view(misionero);
+        misionero.llevarMC();
+        view(misionero);
+        misionero.llevar2M();
+        view(misionero);
+        misionero.llevar1C();
+        view(misionero);
+        misionero.llevar2C();
+        view(misionero);
+        misionero.llevar1C();
+        view(misionero);
+        misionero.llevar2C();
+        view(misionero);
     }
 
     public static void view(Misionero misionero) {
