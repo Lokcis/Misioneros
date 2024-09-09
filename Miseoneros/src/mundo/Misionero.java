@@ -66,14 +66,20 @@ public class Misionero {
                 misionerosIzq--;
                 misionerosDer++;
                 bote = false;
-                System.out.println("holi");
+                System.out.println("Misionero ->");
+            } else {
+                System.out.println("Accion invalida");
             }
         } else {
             if (canibalesIzq <= misionerosIzq && misionerosDer > 0) {
                 misionerosDer--;
                 misionerosIzq++;
                 bote = true;
+                System.out.println("<- Misionero");
+            } else {
+                System.out.println("Accion Invalida");
             }
+
         }
 
     }
@@ -84,29 +90,40 @@ public class Misionero {
                 canibalesIzq--;
                 canibalesDer++;
                 bote = false;
+                System.out.println("Canibal ->");
+            } else {
+                System.out.println("Accion invalida");
             }
         } else {
             if ((misionerosIzq == 0 || misionerosIzq > canibalesIzq) && canibalesDer > 0) {
                 canibalesDer--;
                 canibalesIzq++;
                 bote = true;
+                System.out.println("<- Canibal");
+            } else {
+                System.out.println("Accion invalida");
             }
         }
-
     }
 
     public void llevar2M() {
         if (bote) {
-            if (canibalesDer-2 <= misionerosDer && misionerosIzq > 1) {
+            if (canibalesDer <= misionerosDer + 2 && misionerosIzq > 1) {
                 misionerosIzq -= 2;
                 misionerosDer += 2;
                 bote = false;
+                System.out.println("Misioneros ->");
             } else {
-                if (canibalesIzq-2 <= misionerosIzq && misionerosDer > 1) {
-                    misionerosDer -= 2;
-                    misionerosIzq += 2;
-                    bote = true;
-                }
+                System.out.println("Accion invalida");
+            }
+        } else {
+            if (canibalesIzq <= misionerosIzq + 2 && misionerosDer > 1) {
+                misionerosDer -= 2;
+                misionerosIzq += 2;
+                bote = true;
+                System.out.println("<- Misioneros");
+            } else {
+                System.out.println("Accion invalida");
             }
         }
     }
@@ -117,12 +134,19 @@ public class Misionero {
                 canibalesIzq -= 2;
                 canibalesDer += 2;
                 bote = false;
+                System.out.println("Canibales ->");
+            } else {
+                System.out.println("Accion invalida");
             }
+
         } else {
             if (misionerosIzq == 0 || misionerosIzq > canibalesIzq + 1 && canibalesDer > 1) {
                 canibalesDer -= 2;
                 canibalesIzq += 2;
                 bote = true;
+                System.out.println("<- Canibales");
+            } else {
+                System.out.println("Accion invalida");
             }
         }
     }
@@ -135,18 +159,21 @@ public class Misionero {
                 misionerosDer++;
                 canibalesDer++;
                 bote = false;
+                System.out.println("Misionero y Canibal ->");
+            } else {
+                System.out.println("Accion invalida");
             }
         } else {
             if (misionerosDer > 0 && canibalesDer > 0 && (misionerosIzq >= canibalesIzq || misionerosIzq == 0)) {
-                // Lleva un misionero y un caníbal de derecha a izquierda
                 misionerosDer--;
                 canibalesDer--;
                 misionerosIzq++;
                 canibalesIzq++;
                 bote = true;
+                System.out.println("<- Misionero y Canibal");
+            } else {
+                System.out.println("Accion invalida");
             }
         }
-
     }
-
 }
