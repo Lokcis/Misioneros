@@ -60,119 +60,159 @@ public class Misionero {
         this.bote = bote;
     }
 
+    // Método para validar la seguridad en una orilla
+    private boolean esSeguro() {
+        // Verificar seguridad en la orilla izquierda
+        boolean seguroIzq = (misionerosIzq >= canibalesIzq) || (misionerosIzq == 0);
+        // Verificar seguridad en la orilla derecha
+        boolean seguroDer = (misionerosDer >= canibalesDer) || (misionerosDer == 0);
+        return seguroIzq && seguroDer;
+    }
+
     public void llevar1M() {
-        if (bote) {
-            if (canibalesDer <= misionerosDer && misionerosIzq > 0) {
+        if (bote && misionerosIzq > 0) {
+            misionerosIzq--;
+            misionerosDer++;
+            bote = false;
+            System.out.println("Misionero ->");
+        } else if (!bote && misionerosDer > 0) {
+            misionerosDer--;
+            misionerosIzq++;
+            bote = true;
+            System.out.println("<- Misionero");
+        } else {
+            System.out.println("Acción inválida");
+            return;
+        }
+        if (!esSeguro()) {
+            System.out.println("Acción inválida: Inseguro");
+            // Deshacer el movimiento
+            if (bote) {
+                misionerosIzq++;
+                misionerosDer--;
+            } else {
                 misionerosIzq--;
                 misionerosDer++;
-                bote = false;
-                System.out.println("Misionero ->");
-            } else {
-                System.out.println("Accion invalida");
             }
-        } else {
-            if (canibalesIzq <= misionerosIzq && misionerosDer > 0) {
-                misionerosDer--;
-                misionerosIzq++;
-                bote = true;
-                System.out.println("<- Misionero");
-            } else {
-                System.out.println("Accion Invalida");
-            }
-
         }
-
     }
 
     public void llevar1C() {
-        if (bote) {
-            if ((misionerosDer == 0 || misionerosDer > canibalesDer) && canibalesIzq > 0) {
+        if (bote && canibalesIzq > 0) {
+            canibalesIzq--;
+            canibalesDer++;
+            bote = false;
+            System.out.println("Caníbal ->");
+        } else if (!bote && canibalesDer > 0) {
+            canibalesDer--;
+            canibalesIzq++;
+            bote = true;
+            System.out.println("<- Caníbal");
+        } else {
+            System.out.println("Acción inválida");
+            return;
+        }
+        if (!esSeguro()) {
+            System.out.println("Acción inválida: Inseguro");
+            // Deshacer el movimiento
+            if (bote) {
+                canibalesIzq++;
+                canibalesDer--;
+            } else {
                 canibalesIzq--;
                 canibalesDer++;
-                bote = false;
-                System.out.println("Canibal ->");
-            } else {
-                System.out.println("Accion invalida");
-            }
-        } else {
-            if ((misionerosIzq == 0 || misionerosIzq > canibalesIzq) && canibalesDer > 0) {
-                canibalesDer--;
-                canibalesIzq++;
-                bote = true;
-                System.out.println("<- Canibal");
-            } else {
-                System.out.println("Accion invalida");
             }
         }
     }
 
     public void llevar2M() {
-        if (bote) {
-            if (canibalesDer <= misionerosDer + 2 && misionerosIzq > 1) {
+        if (bote && misionerosIzq > 1) {
+            misionerosIzq -= 2;
+            misionerosDer += 2;
+            bote = false;
+            System.out.println("Misioneros ->");
+        } else if (!bote && misionerosDer > 1) {
+            misionerosDer -= 2;
+            misionerosIzq += 2;
+            bote = true;
+            System.out.println("<- Misioneros");
+        } else {
+            System.out.println("Acción inválida");
+            return;
+        }
+        if (!esSeguro()) {
+            System.out.println("Acción inválida: Inseguro");
+            // Deshacer el movimiento
+            if (bote) {
+                misionerosIzq += 2;
+                misionerosDer -= 2;
+            } else {
                 misionerosIzq -= 2;
                 misionerosDer += 2;
-                bote = false;
-                System.out.println("Misioneros ->");
-            } else {
-                System.out.println("Accion invalida");
-            }
-        } else {
-            if (canibalesIzq <= misionerosIzq + 2 && misionerosDer > 1) {
-                misionerosDer -= 2;
-                misionerosIzq += 2;
-                bote = true;
-                System.out.println("<- Misioneros");
-            } else {
-                System.out.println("Accion invalida");
             }
         }
     }
 
     public void llevar2C() {
-        if (bote) {
-            if (misionerosDer == 0 || misionerosDer > canibalesDer + 1 && canibalesIzq > 1) {
+        if (bote && canibalesIzq > 1) {
+            canibalesIzq -= 2;
+            canibalesDer += 2;
+            bote = false;
+            System.out.println("Caníbales ->");
+        } else if (!bote && canibalesDer > 1) {
+            canibalesDer -= 2;
+            canibalesIzq += 2;
+            bote = true;
+            System.out.println("<- Caníbales");
+        } else {
+            System.out.println("Acción inválida");
+            return;
+        }
+        if (!esSeguro()) {
+            System.out.println("Acción inválida: Inseguro");
+            // Deshacer el movimiento
+            if (bote) {
+                canibalesIzq += 2;
+                canibalesDer -= 2;
+            } else {
                 canibalesIzq -= 2;
                 canibalesDer += 2;
-                bote = false;
-                System.out.println("Canibales ->");
-            } else {
-                System.out.println("Accion invalida");
-            }
-
-        } else {
-            if (misionerosIzq == 0 || misionerosIzq > canibalesIzq + 1 && canibalesDer > 1) {
-                canibalesDer -= 2;
-                canibalesIzq += 2;
-                bote = true;
-                System.out.println("<- Canibales");
-            } else {
-                System.out.println("Accion invalida");
             }
         }
     }
 
     public void llevarMC() {
-        if (bote) {
-            if (misionerosIzq > 0 && canibalesIzq > 0 && (misionerosDer >= canibalesDer || misionerosDer == 0)) {
+        if (bote && misionerosIzq > 0 && canibalesIzq > 0) {
+            misionerosIzq--;
+            canibalesIzq--;
+            misionerosDer++;
+            canibalesDer++;
+            bote = false;
+            System.out.println("Misionero y Caníbal ->");
+        } else if (!bote && misionerosDer > 0 && canibalesDer > 0) {
+            misionerosDer--;
+            canibalesDer--;
+            misionerosIzq++;
+            canibalesIzq++;
+            bote = true;
+            System.out.println("<- Misionero y Caníbal");
+        } else {
+            System.out.println("Acción inválida");
+            return;
+        }
+        if (!esSeguro()) {
+            System.out.println("Acción inválida: Inseguro");
+            // Deshacer el movimiento
+            if (bote) {
+                misionerosIzq++;
+                canibalesIzq++;
+                misionerosDer--;
+                canibalesDer--;
+            } else {
                 misionerosIzq--;
                 canibalesIzq--;
                 misionerosDer++;
                 canibalesDer++;
-                bote = false;
-                System.out.println("Misionero y Canibal ->");
-            } else {
-                System.out.println("Accion invalida");
-            }
-        } else {
-            if (misionerosDer > 0 && canibalesDer > 0 && (misionerosIzq >= canibalesIzq || misionerosIzq == 0)) {
-                misionerosDer--;
-                canibalesDer--;
-                misionerosIzq++;
-                canibalesIzq++;
-                bote = true;
-                System.out.println("<- Misionero y Canibal");
-            } else {
-                System.out.println("Accion invalida");
             }
         }
     }
