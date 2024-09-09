@@ -127,6 +127,24 @@ public class Misionero {
     }
 
     public void llevarMC() {
+        if (bote) {
+            if (misionerosIzq > 0 && canibalesIzq > 0 && (misionerosDer >= canibalesDer || misionerosDer == 0)) {
+                misionerosIzq--;
+                canibalesIzq--;
+                misionerosDer++;
+                canibalesDer++;
+                bote = false;
+            }
+        } else {
+            if (misionerosDer > 0 && canibalesDer > 0 && (misionerosIzq >= canibalesIzq || misionerosIzq == 0)) {
+                // Lleva un misionero y un caníbal de derecha a izquierda
+                misionerosDer--;
+                canibalesDer--;
+                misionerosIzq++;
+                canibalesIzq++;
+                bote = true;
+            }
+        }
 
     }
 
